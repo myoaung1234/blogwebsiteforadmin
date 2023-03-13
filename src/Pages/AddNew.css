@@ -1,0 +1,133 @@
+.add-new {
+    padding: 20px 40px;
+}
+
+/* new product */
+
+.product-form-wrapper {
+  width: 100%;
+  align-items: start;
+  background-color: #fff;
+  position: relative;
+  padding-top: 1rem;
+}
+
+.product-form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.product-form > .product-form-control {
+  flex: 1 0 47%;
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+  
+}
+
+.product-form > .product-form-control > img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.product-form > .product-btn-control {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.product-form > .product-form-control > label,
+.product-form > .product-form-control > p {
+  font-size: .9rem;
+  font-weight: bold;
+  top: 0;
+  left: 0;
+}
+
+.product-form > .product-form-control > input,
+.product-form > .product-form-control > select {
+  border: 1px solid #333;
+  width: 100%;
+  padding: 1rem 0 1rem 1rem;
+  border-radius: .2rem;
+  font-size: 16px;
+  outline: none;
+}
+
+.product-form-control #file-upload{
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #333;
+  width: 100%;
+  height: 50px;
+  border-radius: .2rem;
+  font-size: 16px;
+  outline: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.custom-file-upload img {
+  width: 100%;
+}
+
+.product-form > .product-form-control > input:focus {
+  border: 2px solid lightskyblue;
+}
+
+.product-btn-control {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.product-form-control .quill {
+  display: block;
+  width: 100%;
+  font-weight: 500;
+  height: 100px;
+  outline: none;
+  margin-bottom: 40px;  
+}
+
+.product-form-control :focus {
+    border: 2px solid lightskyblue;
+}
+
+.new-product-btn {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: lightskyblue;
+  border: none;
+  outline: none;
+  border-radius: .2rem;
+  font-weight: bolder;
+}
+
+.product-btn-control a {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgb(250, 135, 135);
+  border: none;
+  outline: none;
+  border-radius: .2rem;
+  font-weight: bolder;
+}
+
+.quotes {
+  display: flex;
+  flex-direction: column;
+}
+
+
+

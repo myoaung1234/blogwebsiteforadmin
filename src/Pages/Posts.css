@@ -1,0 +1,156 @@
+
+
+.posts {
+    display: block;
+    padding: 20px 40px;
+}
+
+.posts-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.header-left {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.header-left h2 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.header-left p {
+    font-size: 16px;
+    font-weight: 600;
+    color: lightskyblue;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 20px;
+}
+
+.header-left p>span {
+    color: #827676;
+}
+
+.header-left input {
+    width: 250px;
+    padding: 6px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 2px solid #333;
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 40px;
+}
+
+.header-left input:focus {
+    border: 2px solid lightskyblue;
+}
+
+.posts-header .add-new {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 8px 10px;
+    background-color: lightskyblue;
+    border-radius: 5px;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-new i {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.table-header {
+    background-color: lightskyblue;
+    color: #fff;
+}
+
+
+
+tr .action {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.action a, .action p {
+    font-size: 25px;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.action p:hover {
+    scale: 1.1;
+}
+
+.action .delete {
+    color: rgb(234, 29, 29);
+}
+
+.action .edit {
+    color: rgb(156, 135, 250);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+.page-item {
+    display: flex;
+    align-items: center;
+}
+
+.page-link {
+    padding: 4px 6px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.pagi {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    gap: 1rem;
+}
+
+.pagi button {
+    border: 1px solid #333;
+    outline: none;
+    padding: 8px 10px;
+    background-color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+
+
+
