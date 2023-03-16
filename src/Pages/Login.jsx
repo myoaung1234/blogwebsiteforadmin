@@ -37,12 +37,12 @@ const Login = () => {
   return (
     <div className='login'>
       <div className="register-container">
-        <h2><span>Login</span> Form</h2>
+        <h2>Login</h2>
         <form onSubmit={handleLogin}>
-          <label htmlFor="email"><b>Email</b></label>
+          <label htmlFor="email"><p>Email</p></label>
           <input type="text" placeholder="Enter Email" onChange={e => setEmail(e.target.value)}  required />
   
-          <label htmlFor="psw"><b>Password</b></label>
+          <label htmlFor="psw"><p>Password</p></label>
           <input type="password" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} required />
 
           <button type="submit" className="register-btn" disabled={isLoggedIn} >Login</button>

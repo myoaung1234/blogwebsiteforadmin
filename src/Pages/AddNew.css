@@ -7,15 +7,16 @@
 .product-form-wrapper {
   width: 100%;
   align-items: start;
-  background-color: #fff;
   position: relative;
-  padding-top: 1rem;
+  padding: 10px 20px;
+  background-color: #000;
 }
 
 .product-form {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: 1rem;
 }
@@ -24,8 +25,6 @@
   flex: 1 0 47%;
   display: flex;
   flex-direction: column;
-  row-gap: .5rem;
-  
 }
 
 .product-form > .product-form-control > img {
@@ -33,6 +32,7 @@
   height: 100px;
   object-fit: cover;
 }
+
 
 .product-form > .product-btn-control {
   width: 100%;
@@ -55,6 +55,8 @@
   border-radius: .2rem;
   font-size: 16px;
   outline: none;
+  background-color: #191c24;
+  color: #ccc;
 }
 
 .product-form-control #file-upload{
@@ -73,6 +75,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-color: #191c24;
 }
 
 .custom-file-upload img {
@@ -80,7 +83,7 @@
 }
 
 .product-form > .product-form-control > input:focus {
-  border: 2px solid lightskyblue;
+  border: 1px solid #ccc;
 }
 
 .product-btn-control {
@@ -93,9 +96,14 @@
   display: block;
   width: 100%;
   font-weight: 500;
-  height: 100px;
+  height: 200px;
   outline: none;
+  background-color: #191c24;
   margin-bottom: 40px;  
+}
+
+.ql-editor {
+  background-color: #191c24;
 }
 
 .product-form-control :focus {
@@ -103,25 +111,27 @@
 }
 
 .new-product-btn {
-  padding: 1rem 2rem;
+  padding: 10px 15px;
   cursor: pointer;
   color: #fff;
-  background-color: lightskyblue;
+  background-color: #156df2;
   border: none;
   outline: none;
   border-radius: .2rem;
-  font-weight: bolder;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .product-btn-control a {
-  padding: 1rem 2rem;
+  padding: 10px 15px;
   cursor: pointer;
   color: #fff;
-  background-color: rgb(250, 135, 135);
+  background-color: #a8303c;
   border: none;
   outline: none;
   border-radius: .2rem;
-  font-weight: bolder;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .quotes {

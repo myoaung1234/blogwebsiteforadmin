@@ -1,22 +1,24 @@
 
 .sidebar {
     width: 300px;
-    height: 110vh;
-    background-color: #000;
+    height: 100vh;
+    background-color: #191c25;
     color: #fff;
     position: sticky;
+    top: 0;
+    z-index: 99999;
 }
 
 .top-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 15px;
+    padding: 17.5px 15px;
 }
 
 .logo {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 10px;
+    font-weight: 600;
 }
 
 .bars {
@@ -35,25 +37,30 @@
 }
 
 
-
-.active {
-    background-color: lightskyblue;
-    color: #000;
+.icon, .link-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
 }
 
-.icon, .link-text {
-    font-size: 20px;
+a.active {
+    background-color: #0f1016;
+}
+
+a.active > * {
+    
+    color: rgba(255, 255, 255, 1) !important;
 }
 
 .logout {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
     color: #fff;
     margin-left: 5px;
     margin-top: 20px;
     padding: 8px 10px;
-    border-radius: 8px;
-    background-color: red;
+    border-radius: 5px;
+    background-color: #ab2e3c;
     cursor: pointer;
     display: flex;
     align-items: center;

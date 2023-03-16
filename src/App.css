@@ -10,12 +10,13 @@
 
 html,
 body {
-  overflow-x: hidden;
   font-family: 'Roboto',sans-serif;
 }
 
 .container {
     display: flex;
+    color: #ccc;
+    background-color: #000;
 }
 
 main {

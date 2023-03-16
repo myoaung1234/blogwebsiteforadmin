@@ -15,11 +15,7 @@ const Header = () => {
             <img src={image || avatar} alt="profile"/>
         </div>
         <div className="text">
-            <h1 className='logo'>{name}</h1>
-            <div className="text-inner">
-                <div className="active"></div>
-                <p>ActiveNow</p>
-            </div>
+          <h1 className='logo'>{name}</h1>
         </div>
     </div>
   )

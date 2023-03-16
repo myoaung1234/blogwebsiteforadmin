@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import './User.css'
 import { HiUsers } from 'react-icons/hi'
-import { BiChevronsRight } from 'react-icons/bi'
+import { BiChevronsRight, BiImageAdd } from 'react-icons/bi'
 import { axiosAuth } from '../config/axios'
 import { format } from 'timeago.js';
+import { MdDelete } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
 const User = () => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState();
   const [page, setPage] = useState(1);
 
@@ -28,6 +31,13 @@ const User = () => {
     getUsers();
   }, [page]);
 
+  //handle Delete Function 
+    const handleDelete = async (id) =>{
+      alert("Are you sure to Delete")
+      await  axiosAuth.delete( `http://localhost:5000/v1/users/${id}`)
+        getUsers(page)
+    }
+
   return (
     <div className='user-container'>
       <div className="posts-header">
@@ -38,9 +48,9 @@ const User = () => {
           </div>
           <p>Dashboard<BiChevronsRight /><span>User Info</span></p>
         </div>
-        <div className="add-new">
-          <a href="/admin/user/register">Add User</a>
-        </div>
+        <div className='add-new' onClick={() => {
+          navigate('/admin/user/register')
+        }}><i><BiImageAdd/></i>Add User</div>
       </div>
       <div className="user-list">
           <table>
@@ -51,7 +61,7 @@ const User = () => {
                 <th>User Name</th>
                 <th>Email</th>
                 <th>Register Date</th>
-                <th>Posts</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -62,7 +72,7 @@ const User = () => {
                   <td>{data.name}</td>
                   <td>{data.email}</td>
                   <td>{format(data.createdAt)}</td>
-                  <td>{14}</td>
+                  <td className='action'><p className='delete' onClick={() => handleDelete(data.id)}><MdDelete /></p></td>
                 </tr>
                 ))
               }

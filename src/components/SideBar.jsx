@@ -70,7 +70,6 @@ const SideBar = ( {children}) => {
               <div className="icon">{item.icon}</div>
               <div  className="link-text" style={{display: isOpen ? "block" : 'none'}}>{item.name}</div>
             </NavLink>
-            
           ))
         }
         <button className='logout' onClick={handleLogOut}><h4 style={{display: isOpen ? "block" : 'none'}}>LogOut</h4><FiLogOut/></button>

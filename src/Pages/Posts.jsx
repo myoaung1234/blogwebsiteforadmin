@@ -14,7 +14,7 @@ const Posts = () => {
   const [search, setSearch] = useState('')
   
   const getPosts = async () => {
-    let url = `http://localhost:5000/v1/posts/?sortBy=_id:desc&page=${page}&limit=4`
+    let url = `http://localhost:5000/v1/posts/?sortBy=_id:desc&page=${page}&limit=8`
     if(search) {
       url += `&title=${search}`
     };

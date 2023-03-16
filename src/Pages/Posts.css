@@ -25,7 +25,7 @@
 .header-left p {
     font-size: 16px;
     font-weight: 600;
-    color: lightskyblue;
+    color: rgba(255, 255, 255, 0.4);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -41,14 +41,16 @@
     padding: 6px 10px;
     font-size: 16px;
     font-weight: 500;
-    border: 2px solid #333;
-    border-radius: 8px;
+    border: 2px solid #272a31;
+    border-radius: 4px;
     outline: none;
-    margin-bottom: 40px;
+    background-color: #191c25;
+    margin-bottom: 10px;
+    color: #fff;
 }
 
 .header-left input:focus {
-    border: 2px solid lightskyblue;
+    border: 2px solid #0d6efd;
 }
 
 .posts-header .add-new {
@@ -56,9 +58,9 @@
     align-items: center;
     gap: 0.5rem;
     padding: 8px 10px;
-    background-color: lightskyblue;
+    background-color: #198754;
     border-radius: 5px;
-    color: #000;
+    color: #fff;
     font-weight: 600;
     cursor: pointer;
 }
@@ -75,7 +77,7 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid #272a31;
   text-align: left;
   padding: 8px;
   font-size: 16px;
@@ -83,11 +85,9 @@ td, th {
 }
 
 .table-header {
-    background-color: lightskyblue;
+    background-color: #191c25;
     color: #fff;
 }
-
-
 
 tr .action {
     display: flex;
@@ -108,11 +108,11 @@ tr .action {
 }
 
 .action .delete {
-    color: rgb(234, 29, 29);
+    color: #ab2e3c;
 }
 
 .action .edit {
-    color: rgb(156, 135, 250);
+    color: #0d6efd;
 }
 
 .pagination {
@@ -137,6 +137,7 @@ tr .action {
 .pagi {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     margin-top: 15px;
     gap: 1rem;
 }
@@ -144,12 +145,21 @@ tr .action {
 .pagi button {
     border: 1px solid #333;
     outline: none;
-    padding: 8px 10px;
-    background-color: #ffffff;
-    font-size: 16px;
+    padding: 6px 10px;
+    background-color: #0d6efd;
+    color: #fff;
+    font-size: 14px;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 4px;
+    cursor: pointer;
 }
+
+.pagi button:disabled {
+    background-color: #434040;
+    cursor: not-allowed;
+}
+
+
 
 
 

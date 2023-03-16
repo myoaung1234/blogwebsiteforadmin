@@ -1,28 +1,17 @@
 .header {
     width: 100%;
-    padding: 15px 20px;
+    padding: 10px 20px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-end;
-    background-color: #333;
-}
-
-.header-inner {
-    position: absolute;
-    top: 100px;
-    right: 10px;
-    display: flex;
-    align-content: flex-start;
-    flex-direction: column;
-    width: 200px;
-    padding: 20px 35px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #191c25;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 }
 
 .header-inner p{
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -32,13 +21,11 @@
     transition: all 0.5s;
 }
 
-
-
 .header .image {
-    flex: 0 0 60px;
-    height: 60px;
+    flex: 0 0 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 3px solid blue;
+    border: 2px solid #198754;
     overflow: hidden;
     margin-right: 10px;
     cursor: pointer;
@@ -46,6 +33,8 @@
 
 .image img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .text {
@@ -62,21 +51,15 @@
     gap: 0.5rem;
 }
 
-.text-inner .active {
-    flex: 0 0 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: green;
-}
-
 .text-inner p {
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
     color: #fff;
 }
 
 .logo {
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 600;
     color: #fff;
+    text-transform: uppercase;
 }

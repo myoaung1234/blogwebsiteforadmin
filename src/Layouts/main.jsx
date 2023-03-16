@@ -6,7 +6,6 @@ import ProtectedRoute from '../ProtectedRoute';
 
 
 const Main = () => {
-  
   return (
     <ProtectedRoute>
           <SideBar>

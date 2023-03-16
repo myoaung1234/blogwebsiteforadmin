@@ -10,17 +10,19 @@ const AddQuotes = () => {
   const [quoteser, setQuoteser] = useState('');
   const [quotes, setQuotes] = useState('');
 
-  
-  
   const handleSubmite = async (e) => {
     e.preventDefault();
     const url = 'http://localhost:5000/v1/quotess'
-    
+    let data = {
+      quoteser: quoteser,
+      quotes: quotes
+    }
     try {
-      const res = await (await axiosAuth.post(url, {quoteser: quoteser, quotes: quotes})).data
+      const res = await (await axiosAuth.post(url, data)).data
+      console.log(res)
       navigate('/admin/quotes')
     } catch (error) {
-      console.log(error)
+      console.log("error", error)
     } 
   }
 

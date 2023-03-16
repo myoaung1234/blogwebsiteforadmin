@@ -2,7 +2,7 @@ import './AddNew.css'
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { BiChevronsRight } from 'react-icons/bi'
+import { BiChevronsRight, BiImageAdd } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { axiosAuth } from '../config/axios';
@@ -50,7 +50,6 @@ const AddNew = () => {
       desc: desc , 
       category: category 
     }
-    console.log(Credentials)
     e.preventDefault();
     try {
       setLoading(false)
@@ -76,7 +75,6 @@ const AddNew = () => {
       </div>
       <div className='product-form-wrapper'>
         <form className='product-form'  onSubmit={(e) => handleSubmite(e)}>
-
             <div className='product-form-control'>
                 <label className='username'>Title*</label>
                 <input type="text" onChange={(e) => setTitle(e.target.value)} required />
@@ -84,7 +82,7 @@ const AddNew = () => {
             <div className="product-form-control">
               <p>Image*</p>
                 <label htmlFor="file-upload" className='custom-file-upload'>
-                  <img src={image} alt="Image" />
+                  {image ? <img src={image} alt="Image" />: <h1><BiImageAdd /></h1>}
                 </label>
                 <input 
                   type="file"
@@ -128,7 +126,7 @@ const AddNew = () => {
             </div>
         
         </form>
-    </div>
+      </div>
     </div>
   )
 }
