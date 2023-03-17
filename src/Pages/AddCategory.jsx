@@ -9,7 +9,7 @@ const AddCateories = () => {
   const navigate = useNavigate()
   const [title, setTitle] = useState('');
 
-  let url = `${apiURL}/categories`
+  let url = `${apiURL}/admin/categories`
   const handleSubmite = async (e) => {
     e.preventDefault();
     try {
