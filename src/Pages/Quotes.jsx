@@ -32,7 +32,7 @@ const Setting = () => {
    //handle Delete Function 
     const handleDelete = async (id) =>{
       alert("Are you sure to Delete")
-      await  axiosAuth.delete( `http://localhost:5000/v1/quotess/${id}`)
+      await  axiosAuth.delete( `${apiURL}/quotess/${id}`)
         getQuotes();
     }
 

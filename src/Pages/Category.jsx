@@ -33,7 +33,7 @@ const Category = () => {
    //handle Delete Function
     const handleDelete = async (id) =>{
       alert("Are you sure to Delete")
-      await  axiosAuth.delete( `http://localhost:5000/v1/categories/${id}`)
+      await  axiosAuth.delete( `${apiURL}/categories/${id}`)
       getCategories()
     }
 
