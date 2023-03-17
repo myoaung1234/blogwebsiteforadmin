@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 import { BiChevronsRight, BiImageAdd } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { axiosAuth } from '../config/axios';
+import { apiURL, axiosAuth } from '../config/axios';
 import axios  from 'axios';
 
 const AddNew = () => {
@@ -28,10 +28,10 @@ const AddNew = () => {
       .then((response) => {
         setImage(response.data.secure_url)
       })
-  }
+  }  
 
     const getCategory = async () => {
-      const url = "http://localhost:5000/v1/categories";
+      const url = `${apiURL}/categories`;
       const resultPost = await ( await axiosAuth.get(url)).data
       setCategories(resultPost);
     }
@@ -40,9 +40,8 @@ const AddNew = () => {
       getCategory();
     }, []);
 
-  
+  let postURL = `${apiURL}/posts`
   const handleSubmite = async (e) => {
-    const url = 'http://localhost:5000/v1/posts'
     const Credentials = { 
       title: title, 
       image: image,
@@ -53,7 +52,7 @@ const AddNew = () => {
     e.preventDefault();
     try {
       setLoading(false)
-      const res = await (await axiosAuth.post(url, Credentials)).data
+      const res = await (await axiosAuth.post(postURL, Credentials)).data
       setLoading(true)
       navigate('/admin/posts')
     } catch (error) {
@@ -132,17 +131,4 @@ const AddNew = () => {
 }
 
 export default AddNew
-
-function convertToBase64(file){
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result)
-      };
-      fileReader.onerror = (error) => {
-        reject(error)
-      }
-    })
-  }
 

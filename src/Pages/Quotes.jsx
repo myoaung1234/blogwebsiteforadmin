@@ -3,7 +3,7 @@ import { BiChevronsRight, BiImageAdd } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
 import { FiEdit } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
-import { axiosAuth } from '../config/axios'
+import { apiURL, axiosAuth } from '../config/axios'
 
 const Setting = () => {
   const [quotes, setQuotes] = useState();
@@ -11,7 +11,7 @@ const Setting = () => {
 
   
   const getQuotes = async () => {
-    const url = `http://localhost:5000/v1/quotess?page=${page}&limit=4`;
+    const url = `${apiURL}/quotess?page=${page}&limit=4`;
     const resultQuotes = await ( await axiosAuth.get(url)).data
     setPage(resultQuotes?.page)
     setQuotes(resultQuotes);

@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import './Register.css'
 import './Register.css'
-import avatar from '../assets/profile.png'
-import { axiosAuth } from '../config/axios';
+import { apiURL, axiosAuth } from '../config/axios';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FaUserCircle } from 'react-icons/fa';
 import { BiChevronsRight, BiImageAdd } from 'react-icons/bi';
 
 const Register = () => {
@@ -29,7 +27,7 @@ const Register = () => {
 
   const handleSubmite = async (e) => {
     const data = { image, name, email, password};
-    const url = 'http://localhost:5000/v1/users';
+    const url = `${apiURL}/users`;
     e.preventDefault();
     try {
       const res = await (await axiosAuth.post(url, data)).data
@@ -55,6 +53,7 @@ const Register = () => {
                 <input type="text" onChange={e => setName(e.target.value)} required />
             </div>
             <div className="product-form-control">
+
                 <label htmlFor="file-upload" className='custom-file-upload'>
                   {image ? <img src={image} alt="Image" />: <h1><BiImageAdd /></h1>}
                 </label>

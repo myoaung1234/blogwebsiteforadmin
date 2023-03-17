@@ -5,22 +5,22 @@ import 'react-quill/dist/quill.snow.css';
 import { BiChevronsRight } from 'react-icons/bi'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { axiosAuth, axiosAuthUpload } from '../config/axios';
+import { apiURL, axiosAuth, axiosAuthUpload } from '../config/axios';
 
 const EditCategory = () => {
   const navigate = useNavigate();
   const [ category, setCategory] = useState(null);
 
     const getCategory = async (id) => {
-      const url = `http://localhost:5000/v1/categories/${id}`;
+      const url = `${apiURL}/categories/${id}`;
       const getData = await ( await axiosAuth.get(url)).data;
       setCategory({name: getData.name});
     }
 
     const { id } = useParams();
+    const url = `${apiURL}/categories/${id}`
     const handleSubmite = async (e) => {
     e.preventDefault();
-      const url = `http://localhost:5000/v1/categories/${id}`
       const res = await axiosAuthUpload.patch(url, category, {});
       navigate('/admin/category');
   }

@@ -4,7 +4,7 @@ import { BiChevronsRight, BiImageAdd } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
 import { FiEdit } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
-import { axiosAuth } from '../config/axios'
+import { apiURL, axiosAuth } from '../config/axios'
 import { format } from 'timeago.js';
 
 const Posts = () => {
@@ -14,7 +14,7 @@ const Posts = () => {
   const [search, setSearch] = useState('')
   
   const getPosts = async () => {
-    let url = `http://localhost:5000/v1/posts/?sortBy=_id:desc&page=${page}&limit=8`
+    let url = `${apiURL}/posts/?sortBy=_id:desc&page=${page}&limit=8`
     if(search) {
       url += `&title=${search}`
     };
@@ -42,7 +42,7 @@ const Posts = () => {
    //handle Delete Function 
     const handleDelete = async (id) =>{
       alert("Are you sure to Delete")
-      await  axiosAuth.delete( `http://localhost:5000/v1/posts/${id}`)
+      await  axiosAuth.delete( `${apiURL}/posts/${id}`)
         getPosts()
     }
 

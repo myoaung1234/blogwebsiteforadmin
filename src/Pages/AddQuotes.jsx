@@ -3,16 +3,16 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { BiChevronsRight } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom';
-import { axiosAuth } from '../config/axios';
+import { apiURL, axiosAuth } from '../config/axios';
 
 const AddQuotes = () => {
   let navigate = useNavigate();
   const [quoteser, setQuoteser] = useState('');
   const [quotes, setQuotes] = useState('');
 
+  let url = `${apiURL}/quotess`
   const handleSubmite = async (e) => {
     e.preventDefault();
-    const url = 'http://localhost:5000/v1/quotess'
     let data = {
       quoteser: quoteser,
       quotes: quotes

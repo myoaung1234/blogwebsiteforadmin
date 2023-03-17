@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Dashboard.css'
 import { FaBorderAll, FaImages, FaUserFriends } from 'react-icons/fa'
 import { AiOutlineDoubleRight } from 'react-icons/ai'
-import { axiosAuth } from '../config/axios';
+import { apiURL, axiosAuth } from '../config/axios';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -13,25 +13,25 @@ const Dashboard = () => {
   const navigate = useNavigate()
 
   const getCategory = async () => {
-    const url = "http://localhost:5000/v1/categories";
+    const url = `${apiURL}/categories`;
     const resultPost = await ( await axiosAuth.get(url)).data
     setCategory(resultPost);
   }
 
   const getQuotes = async () => {
-    const url = "http://localhost:5000/v1/quotess";
+    const url = `${apiURL}/quotess`;
     const resultPost = await ( await axiosAuth.get(url)).data
     setQuotes(resultPost);
   }
 
   const getUsers = async () => {
-    const url = "http://localhost:5000/v1/users";
+    const url = `${apiURL}/users`;
     const resultPost = await ( await axiosAuth.get(url)).data
     setUsers(resultPost);
   }
   
   const getPosts = async () => {
-    const url = "http://localhost:5000/v1/posts";
+    const url = `${apiURL}/posts`;
     const resultPost = await ( await axiosAuth.get(url)).data
     setPosts(resultPost);
   }

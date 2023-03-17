@@ -2,6 +2,7 @@ import axios from "axios"
 
 let data = localStorage.getItem('user') ?  JSON.parse(localStorage.getItem('user')) : {};
 
+export let apiURL = `https://myoaung.codingburma.com`
 
 export let axiosAuth = axios.create({
   headers: {

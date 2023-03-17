@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './User.css'
 import { HiUsers } from 'react-icons/hi'
 import { BiChevronsRight, BiImageAdd } from 'react-icons/bi'
-import { axiosAuth } from '../config/axios'
+import { apiURL, axiosAuth } from '../config/axios'
 import { format } from 'timeago.js';
 import { MdDelete } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
@@ -13,7 +13,7 @@ const User = () => {
   const [page, setPage] = useState(1);
 
   const getUsers = async () => {
-    const url = `http://localhost:5000/v1/users?page=${page}&limit=4`;
+    const url = `${apiURL}/users?page=${page}&limit=4`;
     const resultUsers = await ( await axiosAuth.get(url)).data
     setUsers(resultUsers);
     setPage(resultUsers?.page) 
@@ -34,7 +34,7 @@ const User = () => {
   //handle Delete Function 
     const handleDelete = async (id) =>{
       alert("Are you sure to Delete")
-      await  axiosAuth.delete( `http://localhost:5000/v1/users/${id}`)
+      await  axiosAuth.delete( `${apiURL}/users/${id}`)
         getUsers(page)
     }
 

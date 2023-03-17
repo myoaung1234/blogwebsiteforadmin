@@ -2,17 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { BiChevronsRight } from 'react-icons/bi'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
-import { axiosAuth } from '../config/axios';
+import { apiURL, axiosAuth } from '../config/axios';
 
 
 const AddCateories = () => {
   const navigate = useNavigate()
   const [title, setTitle] = useState('');
 
+  let url = `${apiURL}/categories`
   const handleSubmite = async (e) => {
     e.preventDefault();
-    const url = 'http://localhost:5000/v1/categories'
-    
     try {
       const res = await (await axiosAuth.post(url, {name: title})).data
       navigate('/admin/category')

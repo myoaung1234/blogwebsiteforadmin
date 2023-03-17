@@ -6,7 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 import { BiChevronsRight } from 'react-icons/bi'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { axiosAuth, axiosAuthUpload } from '../config/axios';
+import { apiURL, axiosAuth, axiosAuthUpload } from '../config/axios';
 import axios from 'axios';
 
 
@@ -36,13 +36,13 @@ const EditPost = () => {
   }
 
     const getCategory = async () => {
-      const url = "http://localhost:5000/v1/categories";
+      const url = `${apiURL}/categories`;
       const resultPost = await ( await axiosAuth.get(url)).data
       setCategories(resultPost);
     }
 
     const getPost = async (id) => {
-      const url = `http://localhost:5000/v1/posts/${id}`;
+      const url = `${apiURL}/posts/${id}`;
       const dataToEdit = await ( await axiosAuth.get(url)).data;
       console.log(dataToEdit)
       setPost({
@@ -55,13 +55,11 @@ const EditPost = () => {
     }
 
     const { id } = useParams();
-
+    const url = `${apiURL}/posts/${id}`
     const handleSubmite = async (e) => {
-    
     e.preventDefault();
     let body = {...post, desc: desc}
     try {
-      const url = `http://localhost:5000/v1/posts/${id}`
       const res = await (await axiosAuthUpload.patch(url, body)).data;
       navigate('/admin/posts');
      } catch (error) {
@@ -76,8 +74,7 @@ const EditPost = () => {
     }, []);
 
     const handleDesc = (newValue) => {
-      setDesc(newValue)
-      
+      setDesc(newValue) 
     }
 
   return (

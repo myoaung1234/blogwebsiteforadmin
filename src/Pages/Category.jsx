@@ -3,7 +3,7 @@ import { BiChevronsRight, BiImageAdd } from 'react-icons/bi'
 import { MdDelete } from 'react-icons/md'
 import { FiEdit } from 'react-icons/fi'
 import { useNavigate, useParams } from 'react-router-dom'
-import { axiosAuth } from '../config/axios'
+import { apiURL, axiosAuth } from '../config/axios'
 
 const Category = () => {
   const navigate = useNavigate()
@@ -11,7 +11,7 @@ const Category = () => {
   const [page, setPage] = useState(1);
 
   const getCategories = async () => {
-    const url = `http://localhost:5000/v1/categories?page=${page}&limit=4`;
+    const url = `${apiURL}/categories?page=${page}&limit=8`;
     const resultCategories = await ( await axiosAuth.get(url)).data
     setCategory(resultCategories);
     setPage(resultCategories?.page)

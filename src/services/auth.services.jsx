@@ -1,6 +1,7 @@
 import axios from "axios";
+import { apiURL } from "../config/axios";
 
-const API_URL = "http://localhost:5000/v1/auth/";
+const API_URL = `${apiURL}/auth/`;
 
 const login = (email, password) => {
   return axios
