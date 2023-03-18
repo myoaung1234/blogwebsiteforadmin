@@ -12,6 +12,7 @@ const Register = () => {
   const [name , setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const onUpload = (files) => {
     const formData = new FormData();
@@ -30,7 +31,9 @@ const Register = () => {
     const url = `${apiURL}/users`;
     e.preventDefault();
     try {
+      setLoading(true)
       const res = await (await axiosAuth.post(url, data)).data
+      setLoading(false)
       navigate('/admin/user');
       window.location.reload();
     } catch (error) {
@@ -82,7 +85,9 @@ const Register = () => {
               <button type='submit' 
                 className='new-product-btn' 
                 onSubmit={(e) => handleSubmite(e)} 
-              >Add User</button>
+              >{
+                loading ? 'Loading...': 'Add User'
+              }</button>
             </div>
         </form>
       </div>

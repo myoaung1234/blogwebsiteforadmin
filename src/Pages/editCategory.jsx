@@ -10,6 +10,7 @@ import { apiURL, axiosAuth, axiosAuthUpload } from '../config/axios';
 const EditCategory = () => {
   const navigate = useNavigate();
   const [ category, setCategory] = useState(null);
+  const [loading, setLoading] = useState(false)
 
     const getCategory = async (id) => {
       const url = `${apiURL}/categories/${id}`;
@@ -21,7 +22,9 @@ const EditCategory = () => {
     const url = `${apiURL}/categories/${id}`
     const handleSubmite = async (e) => {
     e.preventDefault();
+    setLoading(true)
       const res = await axiosAuthUpload.patch(url, category, {});
+      setLoading(false)
       navigate('/admin/category');
   }
 
@@ -47,7 +50,7 @@ const EditCategory = () => {
 
             <div className='product-btn-control'>
               <a href="/admin/posts">Back To</a>
-              <button type='submit' className='new-product-btn' onSubmit={(e) => onSave(e)}>Update Category</button>
+              <button type='submit' className='new-product-btn' onSubmit={(e) => onSave(e)}>{loading ? 'Loading...': 'Update Category'}</button>
             </div>
         
         </form>

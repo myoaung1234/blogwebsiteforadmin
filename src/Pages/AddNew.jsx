@@ -16,7 +16,7 @@ const AddNew = () => {
   const [category, setCategory] = useState('')
   const [desc, setDesc] = useState('');
   const [categories, setCategories] = useState();
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   
   const onUpload = (files) => {
     const formData = new FormData();
@@ -51,17 +51,13 @@ const AddNew = () => {
     }
     e.preventDefault();
     try {
-      setLoading(false)
-      const res = await (await axiosAuth.post(postURL, Credentials)).data
       setLoading(true)
+      const res = await (await axiosAuth.post(postURL, Credentials)).data
+      setLoading(false)
       navigate('/admin/posts')
     } catch (error) {
       console.log(error)
     }
-  }
-
-  if(!loading) {
-    return <h1>Loading...</h1>
   }
 
   return (
@@ -120,8 +116,12 @@ const AddNew = () => {
               <button type='submit' 
                 className='new-product-btn' 
                 onSubmit={(e) => handleSubmite(e)} 
-                disabled={!loading}
-              >Add New Post</button>
+              >{
+                loading ?
+                <span>Loading...</span>
+                :
+                <span>Add New</span>
+              }</button>
             </div>
         
         </form>

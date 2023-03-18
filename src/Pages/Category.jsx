@@ -5,16 +5,20 @@ import { FiEdit } from 'react-icons/fi'
 import { useNavigate, useParams } from 'react-router-dom'
 import { apiURL, axiosAuth } from '../config/axios'
 
+
 const Category = () => {
   const navigate = useNavigate()
   const [category, setCategory] = useState();
+  const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(1);
 
   const getCategories = async () => {
+    setLoading(false)
     const url = `${apiURL}/categories?page=${page}&limit=8`;
     const resultCategories = await ( await axiosAuth.get(url)).data
     setCategory(resultCategories);
     setPage(resultCategories?.page)
+    setLoading(true)
   }
 
   const handleNext = () => {
@@ -59,21 +63,28 @@ const Category = () => {
             <th>Action</th>
           </tr>
           </thead>
-          <tbody>
           {
-            category?.results?.map((data, i) => (
-              <tr key={i}>
-                <td>{(data.id).slice(0, 8)}...</td>
-                <td>{data.name}</td>
-                <td>{data.numberOfPosts}</td>
-                <td className='action'>
-                  <p className='edit' onClick={() => navigate(`/admin/category/${data.id}`)}><FiEdit /></p>
-                  <p className='delete' onClick={() => handleDelete (data.id)}><MdDelete /></p>
-                </td>
-              </tr>
-            ))
+              !loading ?
+              <div className='loading'>
+                <h2>Loading...</h2>
+              </div>
+              :
+            <tbody>
+            {
+              category?.results?.map((data, i) => (
+                <tr key={i}>
+                  <td>{(data.id).slice(0, 8)}...</td>
+                  <td>{data.name}</td>
+                  <td>{data.numberOfPosts}</td>
+                  <td className='action'>
+                    <p className='edit' onClick={() => navigate(`/admin/category/${data.id}`)}><FiEdit /></p>
+                    <p className='delete' onClick={() => handleDelete (data.id)}><MdDelete /></p>
+                  </td>
+                </tr>
+              ))
+            }
+            </tbody>
           }
-          </tbody>
         </table>
         <div className="pagi">
           <button disabled={1 >= page} onClick={() => handlePrev()}>Prev</button>

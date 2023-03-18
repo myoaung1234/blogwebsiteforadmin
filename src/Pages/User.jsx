@@ -11,12 +11,15 @@ const User = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState();
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false)
 
   const getUsers = async () => {
-    const url = `${apiURL}/users?page=${page}&limit=4`;
+    setLoading(false)
+    const url = `${apiURL}/users?page=${page}&limit=6`;
     const resultUsers = await ( await axiosAuth.get(url)).data
     setUsers(resultUsers);
-    setPage(resultUsers?.page) 
+    setPage(resultUsers?.page)
+    setLoading(true) 
   }
 
   const handleNext = () => {
@@ -64,7 +67,13 @@ const User = () => {
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody>
+            {
+              !loading ?
+              <div className='loading'>
+                <h2>Loading...</h2>
+              </div>
+              :
+              <tbody>
               {
                 users?.results?.map((data, i) => (
                   <tr key={i}>
@@ -78,6 +87,7 @@ const User = () => {
               }
               
               </tbody>
+            }
           </table>
           <div className="pagi">
             <button disabled={1 >= page} onClick={() => handlePrev()}>Prev</button>

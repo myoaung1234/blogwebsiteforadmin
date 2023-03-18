@@ -15,6 +15,7 @@ const EditPost = () => {
   const [categories, setCategories] = useState();
   const [desc, setDesc] = useState('');
   const[test, setTest] = useState('<h1>HELLO</h1>')
+  const [loading, setLoading] = useState(false)
   const [ post, setPost] = useState({
     title: '', 
     summary: '', 
@@ -60,7 +61,9 @@ const EditPost = () => {
     e.preventDefault();
     let body = {...post, desc: desc}
     try {
+      setLoading(true)
       const res = await (await axiosAuthUpload.patch(url, body)).data;
+      setLoading(false)
       navigate('/admin/posts');
      } catch (error) {
       console.log(error)
@@ -134,7 +137,7 @@ const EditPost = () => {
 
             <div className='product-btn-control'>
               <a href="/admin/posts">Back To</a>
-              <button type='submit' className='new-product-btn' onSubmit={handleSubmite}>Update Post</button>
+              <button type='submit' className='new-product-btn' onSubmit={handleSubmite}>{loading ? 'Loading..': 'Update Post'}</button>
             </div>
         </form>
         

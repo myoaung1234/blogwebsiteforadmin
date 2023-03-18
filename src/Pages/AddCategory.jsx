@@ -8,12 +8,15 @@ import { apiURL, axiosAuth } from '../config/axios';
 const AddCateories = () => {
   const navigate = useNavigate()
   const [title, setTitle] = useState('');
+  const [loading, setLoading] = useState(false)
 
   let url = `${apiURL}/categories`
   const handleSubmite = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true)
       const res = await (await axiosAuth.post(url, {name: title})).data
+      setLoading(false)
       navigate('/admin/category')
     } catch (error) {
       console.log(error)
@@ -42,7 +45,7 @@ const AddCateories = () => {
 
             <div className='product-btn-control'>
               <a href="/admin/category">Back To</a>
-              <button type='submit' className='new-product-btn'>Add Category</button>
+              <button type='submit' className='new-product-btn'>{loading? 'Loading...': 'Add Category'}</button>
             </div>
         </form>
     </div>

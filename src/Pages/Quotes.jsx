@@ -8,13 +8,16 @@ import { apiURL, axiosAuth } from '../config/axios'
 const Setting = () => {
   const [quotes, setQuotes] = useState();
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   
   const getQuotes = async () => {
+    setLoading(true);
     const url = `${apiURL}/quotess?page=${page}&limit=4`;
     const resultQuotes = await ( await axiosAuth.get(url)).data
     setPage(resultQuotes?.page)
     setQuotes(resultQuotes);
+    setLoading(false);
   }
 
   const handleNext = () => {
@@ -61,18 +64,23 @@ const Setting = () => {
           </thead>
           <tbody>
           {
+            loading ? 
+            <div className='loading'><h2>Loading...</h2></div>:
+            
             quotes?.results?.map((data, i) => (
+              
               <tr key={i}>
                 <td>{(data.id).slice(0, 8)}...</td>
                 <td>{data.quoteser}</td>
                 <td>{data.quotes}</td>
                 <td className='action'>
-                  <p className='edit'><FiEdit /></p>
+                  {/* <p className='edit'><FiEdit /></p> */}
                   <p className='delete' onClick={() => handleDelete(data.id)}><MdDelete /></p>
                 </td>
               </tr>
             ))
           }
+          
           </tbody>
         </table>
         <div className="pagi">

@@ -9,6 +9,7 @@ const AddQuotes = () => {
   let navigate = useNavigate();
   const [quoteser, setQuoteser] = useState('');
   const [quotes, setQuotes] = useState('');
+  const [loading, setLoading] = useState(false)
 
   let url = `${apiURL}/quotess`
   const handleSubmite = async (e) => {
@@ -18,8 +19,9 @@ const AddQuotes = () => {
       quotes: quotes
     }
     try {
+      setLoading(true)
       const res = await (await axiosAuth.post(url, data)).data
-      console.log(res)
+      setLoading(false)
       navigate('/admin/quotes')
     } catch (error) {
       console.log("error", error)
@@ -50,7 +52,7 @@ const AddQuotes = () => {
 
             <div className='product-btn-control'>
               <a href="/quotes">Back To</a>
-              <button type='submit' className='new-product-btn'>Add Category</button>
+              <button type='submit' className='new-product-btn'>{loading ? 'Loading...': 'Add Quotes'}</button>
             </div>
         </form>
     </div>

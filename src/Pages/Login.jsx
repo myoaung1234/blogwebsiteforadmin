@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/userSlice';
+import loading from '../assets/1488.gif'
 
 
 const Login = () => {
@@ -11,8 +12,10 @@ const Login = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { isLoggedIn } = useSelector((state) => state.auth);
+    const { isLoading } = useSelector((state) => state.auth);
     const { message } = useSelector((state) => state.message);
+
+    console.log(isLoading);
 
     const handleLogin = (e) => {
       e.preventDefault();
@@ -30,10 +33,6 @@ const Login = () => {
       });
   };
 
-  if(isLoggedIn) {
-    return <h2>Loading ....</h2>
-  }
-
   return (
     <div className='login'>
       <div className="register-container">
@@ -45,7 +44,14 @@ const Login = () => {
           <label htmlFor="psw"><p>Password</p></label>
           <input type="password" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} required />
 
-          <button type="submit" className="register-btn" disabled={isLoggedIn} >Login</button>
+          <button type="submit" className="register-btn" disabled={isLoading} >
+            {
+              isLoading ?
+              <span>Loading ...</span>
+              :
+              <span>Login</span>
+            }
+          </button>
         </form>
         {message && (
           <div className="form-group">
